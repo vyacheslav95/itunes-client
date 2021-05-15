@@ -27,7 +27,7 @@ class Music extends Component {
     })
 
     const searchQuery = this.state.searchFieldState
-    const url = `https://itunes.apple.com/search?limit=12&explicit=no&entity=song&term=${searchQuery}`
+    const url = `https://itunes.apple.com/search?limit=12&explicit=no&term=${searchQuery}&country=RU&lang=EN`
 
     fetch(
       url,
