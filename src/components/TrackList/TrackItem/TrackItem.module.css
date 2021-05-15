@@ -1,0 +1,40 @@
+.TrackItem {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 4fr 2fr 1fr;
+    grid-gap: 2px;
+    font-size: 14px;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    color: rgba(0, 0, 0, .8);
+}
+
+.TrackItem div {
+    margin: auto 0;
+}
+
+.odd {
+    background: #97BBBE6B;
+}
+
+.additionalInfo {
+    display: grid;
+    grid-template-columns: 1fr 3fr 3fr;
+    grid-gap: 2px;
+    /*padding: 5px;*/
+    padding-bottom: 20px;
+    color: rgba(0, 0, 0, .8);
+}
+
+.additionalInfo span {
+    display: block;
+    color: rgba(0, 0, 0, .6);
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.additionalInfo div {
+    font-size: 13px;
+    /*font-family: 'Roboto', sans-serif;*/
+}
