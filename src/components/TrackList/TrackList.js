@@ -4,9 +4,13 @@ import TrackItem from "./TrackItem/TrackItem";
 import NoTracks from "./NoTracks/NoTracks";
 import millisToMinutesAndSeconds from "../../utils/millisToMinutesAndSeconds";
 
-const TrackList = props => {
+const TrackList = ({
+                     tracks,
+                     expandedTrack,
+                     onExpandTrack,
+                   }) => {
 
-  const tracks = props.tracks.map((track, index) => {
+  const trackItems = !!tracks && tracks.map((track, index) => {
     return (
       <TrackItem
         key={index}
@@ -20,8 +24,8 @@ const TrackList = props => {
         collectionPrice={track.collectionPrice}
         trackTime={millisToMinutesAndSeconds(track.trackTimeMillis)}
         trackPrice={track.trackPrice}
-        expandedTrack={props.expandedTrack}
-        onExpandTrack={props.onExpandTrack}
+        expandedTrack={expandedTrack}
+        onExpandTrack={onExpandTrack}
       />
     )
   })
@@ -37,7 +41,7 @@ const TrackList = props => {
         <div></div>
       </div>
       <hr/>
-      {tracks.length ? tracks : <NoTracks/>}
+      {trackItems.length ? trackItems : <NoTracks/>}
     </>
   )
 }

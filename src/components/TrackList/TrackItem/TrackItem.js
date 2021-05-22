@@ -2,45 +2,53 @@ import React from 'react'
 import classes from './TrackItem.module.css'
 import AdditionalInfo from "../AdditionalInfo/AdditionalInfo";
 
-const TrackItem = props => {
+const TrackItem = ({
+                     index,
+                     expandedTrack,
+                     artist,
+                     image,
+                     trackName,
+                     trackCount,
+                     trackTime,
+                     trackPrice,
+                     collection,
+                     collectionPrice,
+                     genre,
+                     onExpandTrack,
+                   }) => {
 
-  const isExpanded = props.expandedTrack === props.index
+  const isExpanded = expandedTrack === index
 
-  const sign = isExpanded ? 'fa fa-minus' : 'fa fa-plus'
-
-  const cls = [
-    classes.TrackItem,
-    !(props.index % 2)
-      ? classes.odd
-      : null
-  ]
+  const additionalInfo = (
+    isExpanded && <AdditionalInfo
+      index={index}
+      artist={artist}
+      trackName={trackName}
+      collection={collection}
+      trackCount={trackCount}
+      collectionPrice={collectionPrice}
+      trackTime={trackTime}
+      trackPrice={trackPrice}
+      onExpandTrack={onExpandTrack}
+    />
+  )
 
   return (
     <>
       <div
-        className={cls.join(' ')}
-        onClick={() => props.onExpandTrack(props.index)}
+        className={`${classes.TrackItem} ${index % 2 ? null : classes.odd}`}
+        onClick={onExpandTrack(index)}
       >
-        <div><img src={props.image} alt={'pic'}/></div>
-        <div>{props.artist}</div>
-        <div>{props.trackName}</div>
-        <div>{props.collection}</div>
-        <div>{props.genre}</div>
-        <div style={{margin: 'auto', cursor: 'pointer', fontSize: 20, fontWeight: 'bolder'}}>
-          <i className={sign}/>
+        <div><img src={image} alt={'pic'}/></div>
+        <div>{artist}</div>
+        <div>{trackName}</div>
+        <div>{collection}</div>
+        <div>{genre}</div>
+        <div className={classes.expandCollapseButton}>
+          <i className={isExpanded ? 'fa fa-minus' : 'fa fa-plus'}/>
         </div>
       </div>
-      {isExpanded && <AdditionalInfo
-        index={props.index}
-        artist={props.artist}
-        trackName={props.trackName}
-        collection={props.collection}
-        trackCount={props.trackCount}
-        collectionPrice={props.collectionPrice}
-        trackTime={props.trackTime}
-        trackPrice={props.trackPrice}
-        onExpandTrack={props.onExpandTrack}
-      />}
+      {additionalInfo}
     </>
   )
 }

@@ -44,7 +44,7 @@ class Music extends Component {
       .catch(() => alert('Something went wrong!'))
   }
 
-  expandTrackHandler = expandedTrack => { // the method for toggle tracks state between basic and expanded
+  expandTrackHandler = expandedTrack => () => { // the method for toggle tracks state between basic and expanded
     if (expandedTrack === this.state.expandedTrack) {
       this.setState({
         expandedTrack: null
