@@ -6,7 +6,6 @@ const SearchMusic = ({
                        onSearchSubmit,
                      }) => {
 
-  // to define the content of the button
   return (
     <div className={classes.SearchMusic}>
       <form
